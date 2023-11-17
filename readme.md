@@ -27,6 +27,10 @@ on the frontend.
 
 #### upload images for ocr detection
 
+```
+OCR_SPACE_API_KEY=K89062791088957
+```
+
 ```http
   POST
 
