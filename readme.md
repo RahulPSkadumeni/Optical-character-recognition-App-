@@ -28,7 +28,9 @@ on the frontend.
 #### upload images for ocr detection
 
 ```http
-  POST /api/upload
+  POST
+
+  /api/upload
 ```
 
         {

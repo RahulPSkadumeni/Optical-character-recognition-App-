@@ -1,68 +1,3 @@
-// // uploadController.js
-
-// import { createWorker } from "tesseract.js";
-
-// const handleUpload = async (req, res) => {
-//   console.log("inside controller");
-//   try {
-//     const frontImage = req.files["frontImage"][0];
-//     const backImage = req.files["backImage"][0];
-//     // Handle the images here, perform OCR or any processing needed
-
-//     // This is where you'd integrate the OCR library and process the images
-
-//     // Use Tesseract.js to extract text from the images
-//     // const worker = await createWorker({
-//     //   logger: (m) => console.log(m),
-//     // });
-
-//     (async () => {
-//       const worker = await createWorker("eng");
-//       const frontResult = await worker.recognize(
-//         // "https://tesseract.projectnaptha.com/img/eng_bw.png"
-//         frontImage.buffer,
-//         backImage.buffer
-//       );
-//       const backResult = await worker.recognize(
-//         // "https://tesseract.projectnaptha.com/img/eng_bw.png"
-//         backImage.buffer
-//       );
-
-//       console.log(
-//         ">>>>>>>>>>",
-//         frontResult.data.text,
-//         ">>>>>><<<<<<VVVVVVVVVVVVVV>>>>",
-//         backResult.data.text
-//       );
-//       // console.log(ret.data.text);
-//       await worker.terminate();
-
-//       // Extract relevant Aadhaar card details from OCR results
-//       const frontText = frontResult.data.text;
-//       const backText = backResult.data.text;
-//       // Implement logic to parse Aadhaar card details from the extracted text
-
-//       // Format the extracted data
-//       const extractedData = {
-//         front: frontText,
-//         back: backText,
-//         // Include parsed Aadhaar card details here
-//       };
-
-//       // Send a response back to the client
-
-//       res.setHeader("Content-Type", "application/json");
-//       res.json(extractedData);
-//     })();
-
-//     //??  do using google tensor
-//   } catch (error) {
-//     console.error("Error handling files:", error);
-//     res.status(500).json({ message: "Error handling files" });
-//   }
-// };
-
-// export { handleUpload };
 import { ocrSpace } from "ocr-space-api-wrapper";
 
 import fs from "fs";
@@ -101,16 +36,6 @@ const handleUpload = async (req, res) => {
     console.log(backResult);
 
     // Perform OCR on front and back images using the ocr-space-api-wrapper
-    // const frontResult = await ocrSpace(frontImageBuffer, {
-    //   apiKey,
-    //   language: "eng",
-    // });
-    // const backResult = await ocrSpace(backImageBuffer, {
-    //   apiKey,
-    //   language: "eng",
-    // });
-
-    // Handle OCR results...
 
     if (
       frontResult &&
