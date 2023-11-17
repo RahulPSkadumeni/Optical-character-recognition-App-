@@ -24,7 +24,7 @@ app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
 // app.use(bodyParser.json({ limit: "30mb", extended: true }));
 // app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-
+// "http://localhost:3000",
 app.use(
   cors({
     origin: ["http://localhost:3000"],
@@ -40,11 +40,14 @@ const upload = multer({ storage: storage });
 const PORT = process.env.PORT || 3001;
 
 /* middlewares */
+// app.get("/", (req, res) => {
 
 import uploadRoutes from "./routes/uploadRoutes.js";
 
 app.use("/api/upload", uploadRoutes);
-
+app.get("/login", (req, res) => {
+  res.status(200).json("login success");
+});
 mongoose
   .connect(
     // "mongodb+srv://rahulps995:FXUzQB45WFNpFOTG@cluster0.axpd3e6.mongodb.net/?retryWrites=true&w=majority",

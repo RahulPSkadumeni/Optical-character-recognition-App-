@@ -133,9 +133,7 @@ const handleUpload = async (req, res) => {
         // Include parsed Aadhaar card details here
       };
       // finding details in the data
-      // const extractDetails = (text) => {
-      //   console.log("first", text);
-      // };
+
       const extractDetails = (text) => {
         console.log("first", text);
         const lines = text.split(/\r?\n/); // Split text by line breaks
@@ -235,7 +233,7 @@ const handleUpload = async (req, res) => {
       };
 
       res.setHeader("Content-Type", "application/json");
-      res.json(responseData);
+      res.status(200).json(responseData);
     } else {
       console.log("OCR failed for one or both images.");
       res.status(500).json(
