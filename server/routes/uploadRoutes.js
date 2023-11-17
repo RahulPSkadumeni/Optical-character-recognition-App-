@@ -13,7 +13,14 @@ const upload = multer({ storage: storage });
 router.post(
   "/",
   upload.fields([{ name: "frontImage" }, { name: "backImage" }]),
-  handleUpload
+  async (req, res) => {
+    try {
+      await handleUpload(req, res); // Ensure handleUpload function is correctly invoked
+    } catch (error) {
+      console.error("Error handling upload:", error);
+      res.status(500).json({ message: "Error handling upload" });
+    }
+  }
 );
 
 export default router;

@@ -9,9 +9,8 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
+dotenv.config();
 //rote import
-
-// import categoryRoutes from "./routes/categoryRoutes.js";
 
 /*MIDDLEware configuration*/
 const __filename = fileURLToPath(import.meta.url);
@@ -42,43 +41,10 @@ const PORT = process.env.PORT || 3001;
 
 /* middlewares */
 
-app.get("/login", (req, res) => {
-  console.log("hello");
-  try {
-    res.status(200).send("user login success");
-  } catch (error) {
-    console.log("user login failed", error);
-  }
-});
-
-// import categoryRoutes from "./routes/categoryRoutes.js";
-// app.use("/api/product", categoryRoutes);
-// app.post("/api/upload", upload.any(), (req, res) => {
-//   console.log("upload", req);
-//   console.log("file", req.file);
-//   res.status(200).json({ message: "success" });
-// });
 import uploadRoutes from "./routes/uploadRoutes.js";
-// app.post(
-//   "/api/upload",
-//   upload.fields([{ name: "frontImage" }, { name: "backImage" }]),
-//   (req, res) => {
-//     try {
-//       const frontImage = req.files["frontImage"][0];
-//       const backImage = req.files["backImage"][0];
 
-//       // Handle the images here, you can save them or perform OCR or any processing needed
-
-//       // Send a response back to the client
-//       res.setHeader("Content-Type", "application/json");
-//       res.json({ message: "Files received successfully" });
-//     } catch (error) {
-//       console.error("Error handling files:", error);
-//       res.status(500).json({ message: "Error handling files" });
-//     }
-//   }
-// );
 app.use("/api/upload", uploadRoutes);
+
 mongoose
   .connect(
     // "mongodb+srv://rahulps995:FXUzQB45WFNpFOTG@cluster0.axpd3e6.mongodb.net/?retryWrites=true&w=majority",
